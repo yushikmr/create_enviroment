@@ -20,6 +20,27 @@ sudo docker-compose up -d
 起動したら`http://ホストマシンのip:8888`でjupyter serverに接続できる
 passwordが要求される可能性もあるがもあるが何も入力しなくてもログインできる. 
 
+### スクリプト実行したい場合
+
+`sudo docker ps`でコンテナが起動中であることを確認後、
+```bash
+sudo docker exec -it jupyterenv /bin/bash
+```
+でコンテナの中に入れる
+
+```
+user@110e1f679143:~/work$ 
+```
+
+みたいになったら成功. `/home/user/work`内にホストからマウントしたファイルを格納していて、コンテナに入った際もこのパスに入る.
+
+pythonの仮想環境は一つ上の階層の`/home/user/venv`に作成されているので、
+jupyterを同じ環境でスクリププトを実行したい場合は、
+
+`source /home/user/venv/bin/activate`を実行する.
+そうすればディレクトリ関係なく導入したインタープリターとパッケージが使用できる. 
+
+
 
 ## image
 
